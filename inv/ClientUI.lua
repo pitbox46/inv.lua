@@ -98,7 +98,7 @@ function ClientUI:init(client)
     end
 
     function self.search.onChanged()
-        self.updateList()
+        self:updateList()
     end
     
     function self.btnRefresh.onPressed(btn)
@@ -216,7 +216,11 @@ function ClientUI:updateList()
     self.list.items = {}
     for k,v in pairs(self.client.items) do
         local searchString = self.search.text
-        if string.match(v.name, searchString) or string.match(v.displayName, searchString) then
+
+        if (not v.name == nil) and string.match(v.name, searchString) then
+            table.insert(self.items,v)
+        end
+        if string.match(v.displayName, searchString) then
             table.insert(self.items,v)
         end
     end
