@@ -27,6 +27,7 @@ function ClientUI:init(client)
     self.list = ListBox(self,10,10,{})
     self.sb = ScrollBar(self,self.list)
 
+    self.search = TextField(self, 10, "")
     self.btnRefresh = Button(self,"")
     self.lbl = Label(self,"[Nothing]")
     self.lbl.length = self.sidebarWidth
@@ -39,6 +40,7 @@ function ClientUI:init(client)
     self.hbox:addChild(self.sb,false,true,Constants.LinearAlign.START)
     self.hbox:addChild(self.vbox,false,true,Constants.LinearAlign.START)
     
+    self.vbox:addChild(self.search,false,true,Constants.LinearAlign.START)
     self.vbox:addChild(self.btnRefresh,false,true,Constants.LinearAlign.START)
     self.vbox:addChild(self.lbl,false,true,Constants.LinearAlign.START)
     self.vbox:addChild(self.lbl2,false,true,Constants.LinearAlign.START)
@@ -93,6 +95,10 @@ function ClientUI:init(client)
         end
         self.lbl.dirty = true
         self.lbl2.dirty = true
+    end
+
+    function self.search.onChanged()
+        self.updateList()
     end
     
     function self.btnRefresh.onPressed(btn)
@@ -209,7 +215,10 @@ function ClientUI:updateList()
     self.items = {}
     self.list.items = {}
     for k,v in pairs(self.client.items) do
-        table.insert(self.items,v)
+        local searchString = self.search.text
+        if string.match(v.name, searchString) or string.match(v.displayName, searchString) then
+            table.insert(self.items,v)
+        end
     end
     table.sort(self.items, function(a, b) return a:getName():lower() < b:getName():lower() end)
     for k,v in pairs(self.items) do
