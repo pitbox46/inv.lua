@@ -45,7 +45,7 @@ function ClientUI:init(client)
     self.vbox:addChild(self.lbl,false,true,Constants.LinearAlign.START)
     self.vbox:addChild(self.lbl2,false,true,Constants.LinearAlign.START)
     
-    self.blockKeys = {[self.list]=true,[self.sb]=true}
+    self.blockKeys = {[self.list]=true,[self.sb]=true,[self.search]=true}
     
     if turtle then
         self.spinBox = LinearContainer(self,1,1,0)
