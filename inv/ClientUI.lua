@@ -27,8 +27,8 @@ function ClientUI:init(client)
     self.list = ListBox(self,10,10,{})
     self.sb = ScrollBar(self,self.list)
 
-    self.search = TextField(self, 10, "")
     self.btnRefresh = Button(self,"")
+    self.search = TextField(self, 10, "")
     self.lbl = Label(self,"[Nothing]")
     self.lbl.length = self.sidebarWidth
     self.lbl2 = Label(self,"Count: 0")
@@ -40,8 +40,8 @@ function ClientUI:init(client)
     self.hbox:addChild(self.sb,false,true,Constants.LinearAlign.START)
     self.hbox:addChild(self.vbox,false,true,Constants.LinearAlign.START)
     
-    self.vbox:addChild(self.search,false,true,Constants.LinearAlign.START)
     self.vbox:addChild(self.btnRefresh,false,true,Constants.LinearAlign.START)
+    self.vbox:addChild(self.search,false,true,Constants.LinearAlign.START)
     self.vbox:addChild(self.lbl,false,true,Constants.LinearAlign.START)
     self.vbox:addChild(self.lbl2,false,true,Constants.LinearAlign.START)
     
