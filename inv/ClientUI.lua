@@ -102,7 +102,7 @@ function ClientUI:init(client)
 
     function self.search.onChanged()
         self:updateList()
-        self.list.setScroll(0)
+        self.list:setScroll(0)
     end
     
     function self.btnRefresh.onPressed(btn)
