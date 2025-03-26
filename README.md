@@ -1,4 +1,4 @@
-![Screenshot](https://github.com/knector01/inv.lua/blob/master/inv-client-screenshot.png?raw=true)
+![Screenshot](https://github.com/pitbox46/inv.lua/blob/master/inv-client-screenshot.png?raw=true)
 
 # inv.lua
 
