@@ -29,7 +29,7 @@ function ClientUI:init(client)
     self.sb = ScrollBar(self,self.list)
 
     self.btnRefresh = Button(self,"")
-    self.search = TextField(self, 10, "")
+    self.search = TextField(self, 10, "Search:", true)
     self.lbl = Label(self,"[Nothing]")
     self.lbl.length = self.sidebarWidth
     self.lbl2 = Label(self,"Count: 0")

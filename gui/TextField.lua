@@ -10,17 +10,25 @@ local TextField = Widget:subclass()
 -- - root (Root): The root widget
 -- - length (int): Width of the text field in characters.
 -- - text (string): Initial contents of the TextField.
-function TextField:init(root,length,text)
+-- - ghost (boolean): If the initial contents are just for display
+function TextField:init(root,length,text,ghost)
     -- TODO: Add auto-completion
     expect(1, root, "table")
     expect(2, length, "number")
     expect(3, text, "string")
     TextField.superClass.init(self,root)
 
-    self.text = text
-    self.color = colors.white
+    
+    if ghost or false then
+        self.ghostText = text
+        self.text = ""
+    else
+        self.ghostText = ""
+        self.text = text
+    end
+    self.color = colors.lightBlue
     self.textColor = colors.black
-    self.cursorColor = colors.lightGray
+    self.cursorColor = colors.white
     self.cursorScreenPos = {0,0}
     self.char = #self.text
     self.length = length
@@ -74,6 +82,8 @@ function TextField:render()
             chr = string.sub(self.text,self.char,self.char)
         end
         term.write(chr)
+    elseif self.text == "" then
+        term.write(string.sub(self.ghostText,self.scroll+1,math.min(#self.ghostText,self.scroll+self.size[1])))
     end
 end
 
