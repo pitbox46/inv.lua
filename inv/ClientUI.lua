@@ -21,6 +21,7 @@ function ClientUI:init(client)
     self.items = {}
     self.modPressed = false
     
+    self.vboxleft = LinearContainer(self,2,0,0)
     self.vbox = LinearContainer(self,2,1,1)
     self.hbox = LinearContainer(self,1,0,0)
     
@@ -35,13 +36,15 @@ function ClientUI:init(client)
     self.lbl2.length = self.sidebarWidth
 
     self:addChild(self.hbox)
-    
-    self.hbox:addChild(self.list,true,true,Constants.LinearAlign.START)
+
+    self.hbox:addChild(self.vboxleft,true,true,Constants.LinearAlign.START)
     self.hbox:addChild(self.sb,false,true,Constants.LinearAlign.START)
     self.hbox:addChild(self.vbox,false,true,Constants.LinearAlign.START)
     
+    self.vboxleft:addChild(self.search,false,true,Constants.LinearAlign.START)
+    self.vboxleft:addChild(self.list,true,true,Constants.LinearAlign.START)
+    
     self.vbox:addChild(self.btnRefresh,false,true,Constants.LinearAlign.START)
-    self.vbox:addChild(self.search,false,true,Constants.LinearAlign.START)
     self.vbox:addChild(self.lbl,false,true,Constants.LinearAlign.START)
     self.vbox:addChild(self.lbl2,false,true,Constants.LinearAlign.START)
     
