@@ -2,6 +2,9 @@
 
 # inv.lua
 
+This fork adds a search bar to the GUI. The following description is copied from the [original project](https://github.com/lewark/inv.lua)
+except for the installation which was changed to point to this repo
+
 This software provides a lightweight, configurable inventory management and autocrafting system for ComputerCraft:Tweaked / Restitched. Sequences of recipes can be automatically crafted using a crafting turtle alongside crafting machines such as furnaces. A client interface is also provided, allowing quick retrieval and crafting of items, and this interface was created using a [custom GUI toolkit](https://github.com/knector01/gui.lua).
 
 ## Installation
@@ -9,7 +12,7 @@ This software provides a lightweight, configurable inventory management and auto
 The client and server software can be downloaded from GitHub and installed onto turtles in-game using [gitget](http://www.computercraft.info/forums2/index.php?/topic/17387-gitget-version-2-release/).
 ```
 pastebin get W5ZkVYSi gitget
-gitget knector01 inv.lua master inv
+gitget pitbox46 inv.lua master inv
 cd inv
 ```
 
