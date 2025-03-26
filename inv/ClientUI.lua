@@ -220,9 +220,9 @@ function ClientUI:updateList()
     self.items = {}
     self.list.items = {}
     for k,v in pairs(self.client.items) do
-        local searchString = self.search.text
+        local searchString = self.search.text:lower()
 
-        if (string.match(v.name, searchString)) or ((not v.displayName == nil) and string.match(v.displayName, searchString)) then
+        if (string.match(v.name:lower(), searchString)) or (v.displayName ~= nil and string.match(v.displayName:lower(), searchString)) then
             table.insert(self.items,v)
         end
     end
