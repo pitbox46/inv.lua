@@ -59,6 +59,28 @@ function Item:matches(item)
     return false
 end
 
+-- Returns true if this item matches the search query
+function Item:matchesSearch(query)
+    local searchString = query:lower()
+    -- Search by registry name
+    if self.name:lower():match(searchString) then
+        return true
+    end
+    -- Search by translated name
+    if self.displayName ~= nil and self.displayName:lower():match(searchString) then
+        return true
+    end
+    -- Search by tags
+    if searchString:starts('#') then
+        for tag, v in pairs(self.tags) do
+            if tag:lower():match(searchString:gsub('#', '')) then
+                return true
+            end
+        end
+    end
+    return false
+end
+
 -- Returns true if the given item both matches the criteria as specified by Item:match,
 -- and has a count greater than or equal to this item's count.
 function Item:matchesCount(item, count)
