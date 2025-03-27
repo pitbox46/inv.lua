@@ -100,7 +100,7 @@ function ClientUI:init(client)
         self.lbl2.dirty = true
     end
 
-    function self.search.onChanged()
+    function self.search.onChanged(search)
         self:updateList()
         self.list:setScroll(0)
         self.list:setSelected(1)
