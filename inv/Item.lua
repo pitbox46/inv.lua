@@ -71,7 +71,7 @@ function Item:matchesSearch(query)
         return true
     end
     -- Search by tags
-    if searchString:starts('#') then
+    if searchString.match('^#') then
         for tag, v in pairs(self.tags) do
             if tag:lower():match(searchString:gsub('#', '')) then
                 return true
